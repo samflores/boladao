@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: postgres
+  password: sekret
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: boladao_development
+
+test:
+  <<: *default
+  database: boladao_test
+
+production:
+  <<: *default
+  database: boladao_production
+  username: boladao
+  password: <%= ENV["BOLADAO_DATABASE_PASSWORD"] %>

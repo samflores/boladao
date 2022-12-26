@@ -2,12 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
+.sticky {
+  @apply fixed z-[9999] transition bg-white bg-opacity-80;
+  backdrop-filter: blur(5px);
+  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
-*/
+.sticky .navbar-logo {
+  @apply py-2;
+}
+
+.sticky #navbarToggler span {
+  @apply bg-black;
+}
+
+.sticky #navbarCollapse li a {
+  @apply text-white hover:opacity-100 hover:text-black;
+}
+
+#navbarCollapse li .ud-menu-scroll.active {
+  @apply opacity-70;
+}
+
+.sticky #navbarCollapse li .ud-menu-scroll.active {
+  @apply opacity-100 text-black;
+}
+
+.navbarTogglerActive > span:nth-child(1) {
+  @apply transform rotate-45 top-[7px];
+}
+
+.navbarTogglerActive > span:nth-child(2) {
+  @apply opacity-0;
+}
+
+.navbarTogglerActive > span:nth-child(3) {
+  @apply top-[-8px] rotate-[135deg];
+}
+
+.navbar__signin {
+  @apply text-base font-medium text-white hover:text-black hover:opacity-70 py-3 px-7;
+}
+
+.navbar__signup {
+  @apply text-base font-medium text-white bg-white bg-opacity-20 rounded-lg py-3 px-6 hover:bg-opacity-100 hover:text-black duration-300 ease-in-out;
+}
+
+.navbar__navitem {
+  @apply ud-menu-scroll text-base text-black lg:text-white lg:group-hover:opacity-70 lg:group-hover:text-white group-hover:text-black py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0
+}
+
+.sticky .navbar__signup {
+  @apply bg-black hover:bg-black text-white hover:text-white;
+}
+
+.sticky .navbar__signin {
+  @apply text-black;
+}

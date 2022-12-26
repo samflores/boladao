@@ -30,3 +30,5 @@ end
 group :development do
   gem 'web-console'
 end
+
+gem 'racc', '1.6.1'

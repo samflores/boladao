@@ -2,6 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
+.border-primary{
+  --tw-border-opacity: 1;
+  border-color: rgb(48 86 211 / var(--tw-border-opacity));
+}
+.bg-primary{
+  --tw-bg-opacity: 1;
+  background-color: rgb(48 86 211 / var(--tw-bg-opacity));
+}
+.bg-black{
+  --tw-bg-opacity: 1;
+  background-color: rgb(33 43 54 / var(--tw-bg-opacity));
+}
+.bg-secondary{
+  --tw-bg-opacity: 1;
+  background-color: rgb(19 194 150 / var(--tw-bg-opacity));
+}
+.bg-opacity-20{
+  --tw-bg-opacity: 0.2;
+}
+.bg-opacity-5{
+  --tw-bg-opacity: 0.05;
+}
+.bg-gradient-to-t{
+  background-image: linear-gradient(to top, var(--tw-gradient-stops));
+}
+.bg-gradient-to-b{
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+.from-dark-700{
+  --tw-gradient-from: #090e34b3;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(9 14 52 / 0));
+}
+.from-primary{
+  --tw-gradient-from: #3056D3;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(48 86 211 / 0));
+}
+.to-transparent{
+  --tw-gradient-to: transparent;
+}
+.container{
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+@media (min-width: 540px){
+  .container{
+    max-width: 540px;
+  }
+}
+@media (min-width: 720px){
+  .container{
+    max-width: 720px;
+  }
+}
+@media (min-width: 960px){
+  .container{
+    max-width: 960px;
+  }
+}
+@media (min-width: 1140px){
+  .container{
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1320px){
+  .container{
+    max-width: 1320px;
+  }
+}
+
 .sticky {
   @apply fixed z-[9999] transition bg-white bg-opacity-80;
   backdrop-filter: blur(5px);

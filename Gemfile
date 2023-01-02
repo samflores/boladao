@@ -25,6 +25,8 @@ group :development, :test do
   gem 'rubocop-rails', '~> 2.17'
   gem 'rubocop-rspec', '~> 2.15'
   gem 'simplecov', '~> 0.21.2'
+  gem "shoulda-matchers", "~> 5.3"
+  gem "factory_bot_rails", "~> 6.2"
 end
 
 group :development do

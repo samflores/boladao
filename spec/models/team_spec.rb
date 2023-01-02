@@ -55,4 +55,8 @@ RSpec.describe Team do
     expect(team).not_to be_valid
     expect(team.errors[:short_name]).to include('is the wrong length (should be 3 characters)')
   end
+
+  context 'associations' do
+    it { is_expected.to have_and_belong_to_many(:groups) }
+  end
 end

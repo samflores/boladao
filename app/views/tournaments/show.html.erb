@@ -1,0 +1,15 @@
+<div class="cards_box">
+  <h1><%= @tournament.name %></h1>
+  <div class="cards">
+    <% @tournament.groups.each do |group| %>
+      <div class="card">
+        <%= group.name %>
+          <% group.teams.each do |team| %>
+          <div>
+            <%= team.name %>
+          </div>
+          <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -7,5 +7,6 @@ class TournamentsController < ApplicationController
 
   def show
     @tournament = Tournament.includes(groups: :teams).find(params[:id])
+    @matches = Match.where(tournament: @tournament)
   end
 end

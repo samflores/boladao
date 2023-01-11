@@ -3,13 +3,21 @@
   <div class="cards">
     <% @tournament.groups.each do |group| %>
       <div class="card">
-        <%= group.name %>
-          <% group.teams.each do |team| %>
+        <b><%= group.name %></b>
+        <% group.teams.each do |team| %>
           <div>
             <%= team.name %>
           </div>
-          <% end %>
+        <% end %>
       </div>
     <% end %>
   </div>
+  <h1>Matches</h1>
+  <div class='grid grid-cols-5 gap-4'>
+  <% @matches.each do |match| %>
+    <div class="card">
+      <p><%= match.team_a.name %> X <%= match.team_b.name %></p>
+    </div>
+  <% end %>
+  <div>
 </div>

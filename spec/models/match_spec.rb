@@ -19,4 +19,21 @@ RSpec.describe Match, type: :model do
   describe 'enums' do
     it { is_expected.to define_enum_for(:phase).with_prefix }
   end
+
+  describe '#team_a_cannot_be_equal_to_team_b' do
+    let(:team) { build(:team) }
+    let(:invalid_match) {
+      build(
+        :match,
+        team_a: Team.new(id: 1, name: 'Brazil', short_name: 'BRA'),
+        team_b: Team.new(id: 1, name: 'Brazil', short_name: 'BRA')
+      )
+    }
+    
+    it 'adds errors if team_a is equal to team_b' do
+      invalid_match.valid?
+      expect(invalid_match.errors[:team_a]).to include("can't be equal to team b")
+      expect(invalid_match.errors[:team_b]).to include("can't be equal to team a")
+    end
+  end
 end

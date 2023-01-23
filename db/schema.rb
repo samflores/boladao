@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_27_133812) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_02_204013) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,27 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_27_133812) do
     t.bigint "group_id", null: false
     t.index ["group_id"], name: "index_groups_teams_on_group_id"
     t.index ["team_id"], name: "index_groups_teams_on_team_id"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.datetime "starts_at"
+    t.string "location"
+    t.integer "phase"
+    t.bigint "tournament_id", null: false
+    t.bigint "team_a_id", null: false
+    t.bigint "team_b_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_a_id"], name: "index_matches_on_team_a_id"
+    t.index ["team_b_id"], name: "index_matches_on_team_b_id"
+    t.index ["tournament_id"], name: "index_matches_on_tournament_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "teams", force: :cascade do |t|
@@ -47,4 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_27_133812) do
   add_foreign_key "groups", "tournaments"
   add_foreign_key "groups_teams", "groups"
   add_foreign_key "groups_teams", "teams"
+  add_foreign_key "matches", "teams", column: "team_a_id"
+  add_foreign_key "matches", "teams", column: "team_b_id"
+  add_foreign_key "matches", "tournaments"
 end

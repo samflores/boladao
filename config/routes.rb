@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  root to: 'teams#index'
+
   namespace :admin do
     resources :tournaments
     resources :teams
@@ -13,4 +15,5 @@ Rails.application.routes.draw do
   end
   resources :teams, only: %i[index show], param: :short_name
   resources :tournaments, only: %i[index show]
+  resources :bets, only: %i[index]
 end

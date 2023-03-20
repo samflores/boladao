@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 require 'administrate/base_dashboard'
 
-class TournamentDashboard < Administrate::BaseDashboard
+class MatchDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -11,10 +9,15 @@ class TournamentDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    ends_at: Field::DateTime,
-    groups: Field::HasMany,
-    name: Field::String,
+    location: Field::String,
+    phase: Field::Select.with_options(
+      searchable: false,
+      collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }
+    ),
     starts_at: Field::DateTime,
+    team_a: Field::BelongsTo,
+    team_b: Field::BelongsTo,
+    tournament: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -26,19 +29,21 @@ class TournamentDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    ends_at
-    groups
-    name
+    location
+    phase
+    starts_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    groups
-    name
+    location
+    phase
     starts_at
-    ends_at
+    team_a
+    team_b
+    tournament
     created_at
     updated_at
   ].freeze
@@ -47,10 +52,12 @@ class TournamentDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    ends_at
-    groups
-    name
+    location
+    phase
     starts_at
+    team_a
+    team_b
+    tournament
   ].freeze
 
   # COLLECTION_FILTERS
@@ -63,14 +70,12 @@ class TournamentDashboard < Administrate::BaseDashboard
   #   COLLECTION_FILTERS = {
   #     open: ->(resources) { resources.where(open: true) }
   #   }.freeze
-  COLLECTION_FILTERS = {
-    started: ->(resources, _attr) { resources.where('starts_at <= ?', Date.today) }
-  }.freeze
+  COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how tournaments are displayed
+  # Overwrite this method to customize how matches are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(tournament)
-    tournament.name
+  def display_resource(match)
+    "Match #{match.team_a.short_name} X #{match.team_b.short_name}"
   end
 end

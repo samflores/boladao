@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Match < ApplicationRecord
   belongs_to :tournament
   belongs_to :team_a, class_name: 'Team'
@@ -8,7 +10,7 @@ class Match < ApplicationRecord
     round_16: 1,
     round_8: 2,
     semi_finals: 3,
-    final: 4,
+    final: 4
   }, prefix: true
 
   validates :starts_at, presence: true
@@ -18,9 +20,9 @@ class Match < ApplicationRecord
   validate :team_a_cannot_be_equal_to_team_b
 
   def team_a_cannot_be_equal_to_team_b
-    if team_a_id == team_b_id
-      errors.add(:team_a, "can't be equal to team b")
-      errors.add(:team_b, "can't be equal to team a")
-    end
+    return unless team_a_id == team_b_id
+
+    errors.add(:team_a, "can't be equal to team b")
+    errors.add(:team_b, "can't be equal to team a")
   end
 end

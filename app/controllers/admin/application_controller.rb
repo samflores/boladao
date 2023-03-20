@@ -10,6 +10,7 @@ module Admin
 
     def authenticate_admin
       authenticate_user!
+      redirect_to root_path unless current_user.admin?
     end
 
     # Override this value to specify the number of elements to display at a time

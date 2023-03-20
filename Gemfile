@@ -3,9 +3,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.3'
+ruby '3.2.1'
 
-gem 'administrate'
 gem 'bootsnap', require: false
 gem 'importmap-rails'
 gem 'jbuilder'
@@ -21,6 +20,8 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'administrate'
 gem 'administrate-field-active_storage', '~> 0.4.2'
 gem 'image_processing', '~> 1.12'
+
+gem 'devise', '~> 4.9'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

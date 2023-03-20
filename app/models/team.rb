@@ -3,8 +3,8 @@
 class Team < ApplicationRecord
   PAGE_SIZE = 12
 
-  has_many :matches_as_a, inverse_of: :team_a, class_name: "Match"
-  has_many :matches_as_b, inverse_of: :team_b, class_name: "Match"
+  has_many :matches_as_a, inverse_of: :team_a, class_name: 'Match'
+  has_many :matches_as_b, inverse_of: :team_b, class_name: 'Match'
 
   has_and_belongs_to_many :groups
 

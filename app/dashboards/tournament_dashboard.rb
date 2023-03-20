@@ -1,4 +1,6 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+
+require 'administrate/base_dashboard'
 
 class TournamentDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -14,7 +16,7 @@ class TournamentDashboard < Administrate::BaseDashboard
     name: Field::String,
     starts_at: Field::DateTime,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -62,13 +64,13 @@ class TournamentDashboard < Administrate::BaseDashboard
   #     open: ->(resources) { resources.where(open: true) }
   #   }.freeze
   COLLECTION_FILTERS = {
-    started: ->(resources, attr) { resources.where("starts_at <= ?", Date.today) }
+    started: ->(resources, _attr) { resources.where('starts_at <= ?', Date.today) }
   }.freeze
 
   # Overwrite this method to customize how tournaments are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(tournament)
-  #   "Tournament ##{tournament.id}"
-  # end
+  def display_resource(tournament)
+    tournament.name
+  end
 end

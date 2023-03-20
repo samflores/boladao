@@ -1,4 +1,6 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+
+require 'administrate/base_dashboard'
 
 class TeamDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -9,11 +11,12 @@ class TeamDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    groups: Field::HasMany,
     name: Field::String,
     short_name: Field::String,
+    groups: Field::HasMany,
+    shield: Field::ActiveStorage.with_options(index_preview_variant: :index, show_preview_variant: :show),
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -23,26 +26,28 @@ class TeamDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    groups
+    shield
     name
+    short_name
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    groups
     name
     short_name
+    shield
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    groups
     name
     short_name
+    shield
+    groups
   ].freeze
 
   # COLLECTION_FILTERS
@@ -55,14 +60,12 @@ class TeamDashboard < Administrate::BaseDashboard
   #   COLLECTION_FILTERS = {
   #     open: ->(resources) { resources.where(open: true) }
   #   }.freeze
-  COLLECTION_FILTERS = {
-
-  }.freeze
+  COLLECTION_FILTERS = {}.freeze
 
   # Overwrite this method to customize how teams are displayed
   # across all pages of the admin dashboard.
   #
   def display_resource(team)
-    "Team #{team.short_name}"
+    team.name
   end
 end

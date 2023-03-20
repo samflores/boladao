@@ -18,16 +18,20 @@ gem 'tailwindcss-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'administrate'
+gem 'administrate-field-active_storage', '~> 0.4.2'
+gem 'image_processing', '~> 1.12'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails', '~> 6.2'
   gem 'rspec-rails', '~> 6.0'
   gem 'rubocop', '~> 1.40'
   gem 'rubocop-rails', '~> 2.17'
   gem 'rubocop-rspec', '~> 2.15'
+  gem 'shoulda-matchers', '~> 5.3'
   gem 'simplecov', '~> 0.21.2'
-  gem "shoulda-matchers", "~> 5.3"
-  gem "factory_bot_rails", "~> 6.2"
 end
 
 group :development do

@@ -8,4 +8,9 @@ class User < ApplicationRecord
          :recoverable,
          :rememberable,
          :validatable
+
+  enum :role, { admin: 0, player: 1 }
+
+  validates :role, presence: true 
+  
 end

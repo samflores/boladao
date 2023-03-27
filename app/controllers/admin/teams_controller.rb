@@ -11,7 +11,10 @@ module Admin
     # Override this method to specify custom lookup behavior.
     # This will be used to set the resource for the `show`, `edit`, and `update`
     # actions.
-    #
+    def show
+      authorize requested_resource
+    end
+
     def find_resource(param)
       Team.find_by!(short_name: param)
     end

@@ -39,4 +39,10 @@ group :development do
   gem 'web-console'
 end
 
+gem 'pry'
+gem 'pry-nav'
+gem 'pry-remote'
+
 gem 'racc', '1.6.1'
+
+gem 'pundit', '~> 2.3'

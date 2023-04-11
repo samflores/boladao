@@ -33,6 +33,7 @@ group :development, :test do
   gem 'rubocop-rspec', '~> 2.15'
   gem 'shoulda-matchers', '~> 5.3'
   gem 'simplecov', '~> 0.21.2'
+  gem 'dotenv-rails', '~> 2.7'
 end
 
 group :development do

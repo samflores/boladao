@@ -6,11 +6,16 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
-    before_action :authenticate_admin
+    include Pundit::Authorization
+    before_action :authenticate_user!
 
-    def authenticate_admin
-      authenticate_user!
-      redirect_to root_path unless current_user.admin?
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+    
+
+    private
+
+    def user_not_authorized
+      redirect_back(fallback_location: root_path)
     end
 
     # Override this value to specify the number of elements to display at a time

@@ -147,6 +147,10 @@
   @apply bg-black hover:bg-black text-white hover:text-white;
 }
 
-.sticky .navbar__signin {
-  @apply text-black;
+.input {
+  @apply w-full rounded
+}
+
+.link {
+  @apply font-medium text-blue-700 hover:underline
 }

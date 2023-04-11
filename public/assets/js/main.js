@@ -5,7 +5,7 @@
   window.onscroll = function () {
     const ud_header = document.querySelector(".ud-header");
     const sticky = ud_header.offsetTop;
-    const logo = document.querySelector(".header-logo");
+    const logo = document.querySelector(".navbar-logo");
 
     if (window.pageYOffset > sticky) {
       ud_header.classList.add("sticky");

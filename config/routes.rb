@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
 
   root to: 'teams#index'
 
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :teams
     resources :groups
     resources :matches
+    resources :users, only: %i[index show]
 
     root to: 'tournaments#index'
   end

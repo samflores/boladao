@@ -22,9 +22,14 @@
             </ul>
           </nav>
         </div>
-        <div class="sm:flex justify-end hidden pr-16 lg:pr-0">
-          <a href="/sign_in" class="navbar__signin">Sign In</a>
-          <a href="/sign_up" class="navbar__signup">Sign Up</a>
+        <div class="sm:flex justify-end items-center hidden pr-16 lg:pr-0">
+          <%if current_user%>
+            <p class="text-white"><%= current_user.name %></p>
+            <%= link_to 'Sair', destroy_user_session_path, class: 'navbar__signin' %>
+          <%else%>
+            <a href="/users/sign_in" class="navbar__signin">Sign In</a>
+            <a href="/users/sign_up" class="navbar__signup">Sign Up</a>
+          <%end%>
         </div>
       </div>
     </div>

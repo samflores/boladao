@@ -1,0 +1,25 @@
+<h2 style="font-size: 36px;">Hello, <%= @resource.name %>,</p>
+
+<h4 style="
+    font-size: 18px;
+    margin-bottom: 0px;"
+>Welcome to Boladão! You have successfully created your account.</h4>
+
+<p style="
+    font-size: 18px;
+    margin-top: 4px;"
+> To proceed, we need you to confirm that <span style="font-weight: bold;"><%= @email %></span> is your email address.
+    Once you've confirmed, you'll be able to Sign In with your account and start betting!
+</p>
+
+<p style="padding: 8px 14px;
+    background-color: rgb(29 78 216);
+    border-radius: 4px;
+    margin-top: 8px;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;">
+    <%= link_to 'Confirm Email Addess', confirmation_url(@resource, confirmation_token: @token) %>
+</p>
+

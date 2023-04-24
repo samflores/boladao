@@ -33,10 +33,17 @@ group :development, :test do
   gem 'rubocop-rspec', '~> 2.15'
   gem 'shoulda-matchers', '~> 5.3'
   gem 'simplecov', '~> 0.21.2'
+  gem 'dotenv-rails', '~> 2.7'
 end
 
 group :development do
   gem 'web-console'
 end
 
+gem 'pry'
+gem 'pry-nav'
+gem 'pry-remote'
+
 gem 'racc', '1.6.1'
+
+gem 'pundit', '~> 2.3'

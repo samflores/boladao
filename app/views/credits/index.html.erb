@@ -1,1 +1,15 @@
-<h2>CREDITS</h2>
+<div class='w-full flex flex-col'>
+  <div class='flex flex-row items-center justify-between'>
+    <h2 class='font-semibold text-xl'>Meus Créditos</h2>
+    <p>Saldo atual: <strong><%=@credits[:total]%></strong></p>
+  </div>
+
+  <%= link_to "Comprar mais!", new_credit_path, class: 'link py-2' %>
+
+  <div class='w-full flex flex-col'>
+    <% @credits[:data].each do |credit| %>
+      <p><%= credit.amount %></p>
+    <% end %>
+  </div>
+</div>
+

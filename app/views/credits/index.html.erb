@@ -1,15 +1,34 @@
 <div class='w-full flex flex-col'>
-  <div class='flex flex-row items-center justify-between'>
+  <div class='flex flex-row items-center justify-between pb-3'>
     <h2 class='font-semibold text-xl'>Meus Créditos</h2>
-    <p>Saldo atual: <strong><%=@credits[:total]%></strong></p>
+    <div class='flex items-center gap-2'>
+      <%= render 'shared/icon', icon: 'paid', class_name: 'text-blue-500' %>
+      <p class='mr-4'>Saldo atual: <strong><%=@credits[:total]%></strong></p>
+      <%= link_to "Comprar mais! 🤑", new_credit_path, class: 'p-2 rounded text-white font-semibold bg-blue-700 hover:bg-blue-800 cursor-pointer' %>
+    </div>
   </div>
-
-  <%= link_to "Comprar mais!", new_credit_path, class: 'link py-2' %>
-
-  <div class='w-full flex flex-col'>
-    <% @credits[:data].each do |credit| %>
-      <p><%= credit.amount %></p>
-    <% end %>
+  <hr/>
+  <% if @credits[:data].empty? %>
+  <p class='py-6 text-center'>Você ainda não comprou créditos 🥲</p>
+  <% else %>
+  <div class='py-4 w-full flex flex-col'>
+    <table class="table-fixed">
+      <thead>
+        <tr class='text-left'>
+          <th>Qtd. comprada (R$)</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @credits[:data].each do |credit| %>
+        <tr>
+          <td><%= credit.amount %></td>
+          <td><%= credit.created_at.to_fs(:long_ordinal) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
+  <% end %>
 </div>
 

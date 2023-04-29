@@ -79,13 +79,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_25_112650) do
     t.index ["tournament_id"], name: "index_matches_on_tournament_id"
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "teams", force: :cascade do |t|
     t.string "name", null: false
     t.string "short_name", null: false

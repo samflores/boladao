@@ -1,12 +1,38 @@
 <div class="flex flex-col items-center w-full">
-  <h2 class='font-semibold text-xl'>Comprar Créditos</h2>
+  <h2 class='font-semibold text-xl text-blue-700'>Comprar Créditos</h2>
   <div class='py-4 w-auto'>
     <%= form_with model: @credit, url: credits_path, method: :post, local: true do |f| %>
       <div class="field">
         <%= f.label :amount, "Quantidade", class: "block mb-1" %>
         <%= f.number_field :amount, class: "input", required: true %>
       </div>
-
+      <div class="mt-10 flex flex-col">
+        <h3 class='mb-3 font-semibold'>Dados de pagamento (Cartão de crédito)</h3>
+        <div class='flex flex-row gap-4 py-4'>
+          <div>
+            <%= f.label :card_name, "Nome no Cartão", class: "block mb-1" %>
+            <%= f.text_field :card_name, class: "input", required: true %>
+          </div>
+          <div>
+            <%= f.label :card_number, "Número do Cartão", class: "block mb-1" %>
+            <%= f.text_field :card_number, class: "input", required: true %>
+          </div>
+        </div>
+        <div class='flex flex-row gap-4 py-4'>
+          <div>
+            <%= f.label :card_expiration, "Validade", class: "block mb-1" %>
+            <%= f.text_field :card_expiration, class: "input", required: true %>
+            <%# TODO: Show Card flag %>
+          </div>
+          <div>
+            <%= f.label :cart_security_code, "Código de segurança (CVV)", class: "block mb-1" %>
+            <%= f.text_field :cart_security_code, class: "input", required: true %>
+          </div>
+        </div>
+        <% flash.each do |name, message| %>
+        <p class="text-sm text-red-500"><%= message %></p>
+        <% end %>
+      </div>
       <div class="actions">
         <%= f.submit "Comprar Créditos", class: "mt-5 w-full text-center p-4 rounded text-white bg-blue-700 hover:bg-blue-800 cursor-pointer" %>
       </div>

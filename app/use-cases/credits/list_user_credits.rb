@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Credits
   class ListUserCredits
     def initialize(user_id:)
@@ -5,9 +7,21 @@ module Credits
     end
 
     def call
-      credits = Credit.where(user_id: @user_id)
+      check_user
+
+      credits = Credit.where(user_id:)
 
       { total: credits.sum(:amount), data: credits }
+    end
+
+    private
+
+    attr_reader :user_id
+
+    def check_user
+      User.find(user_id)
+    rescue ActiveRecord::RecordNotFound
+      raise ::Credits::NotFoundUserError, 'User not found'
     end
   end
 end

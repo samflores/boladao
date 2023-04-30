@@ -1,22 +1,22 @@
 <div class='w-full flex flex-col'>
   <div class='flex flex-row items-center justify-between pb-3'>
-    <h2 class='font-semibold text-xl'>Meus Créditos</h2>
+    <h2 class='font-semibold text-xl'>My Credits</h2>
     <div class='flex items-center gap-2'>
       <%= render 'shared/icon', icon: 'paid', class_name: 'text-blue-500' %>
-      <p class='mr-4'>Saldo atual: <strong><%=@credits[:total]%></strong></p>
-      <%= link_to "Comprar mais! 🤑", new_credit_path, class: 'p-2 rounded text-white font-semibold bg-blue-700 hover:bg-blue-800 cursor-pointer' %>
+      <p class='mr-4'>Total: <strong><%=@credits[:total]%></strong></p>
+      <%= link_to "Buy more! 🤑", new_credit_path, class: 'p-2 rounded text-white font-semibold bg-blue-700 hover:bg-blue-800 cursor-pointer' %>
     </div>
   </div>
   <hr/>
   <% if @credits[:data].empty? %>
-  <p class='py-6 text-center'>Você ainda não comprou créditos 🥲</p>
+  <p class='py-6 text-center'>You haven't bought credits yet 🥲</p>
   <% else %>
   <div class='py-4 w-full flex flex-col'>
     <table class="table-fixed">
       <thead>
         <tr class='text-left'>
-          <th>Qtd. comprada (R$)</th>
-          <th>Data</th>
+          <th>Purchased quantity (R$)</th>
+          <th>Date</th>
         </tr>
       </thead>
       <tbody>

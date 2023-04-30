@@ -12,7 +12,7 @@ class CreditCardService
   def validate?
     false if some_empty_fields?
 
-    @card_number == '4242 4242 4242 4242'
+    @card_number == '4242 4242 4242 4242' && valid_card_expiration?
   end
 
   private
@@ -20,6 +20,11 @@ class CreditCardService
   def some_empty_fields?
     fields = [card_name, card_number, card_expiration, cart_security_code]
     fields.any? { |field| field&.empty? }
+  end
+
+  def valid_card_expiration?
+    day = Time.zone.now.day
+    Date.parse("#{day}/#{card_expiration}") >= Date.today
   end
 
   attr_reader :card_name, :card_number, :card_expiration, :cart_security_code

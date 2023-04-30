@@ -1,11 +1,10 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
-import "controllers"
+import "@hotwired/turbo-rails";
+import "controllers";
+import Alpine from "alpinejs";
 
-import Alpine from "alpinejs"
+window.Alpine = Alpine;
 
-window.Alpine = Alpine
-
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", () => {
   window.Alpine.start();
 });

@@ -67,5 +67,20 @@ RSpec.describe Credits::BuyCredits do
         expect { buy_credits.call }.to raise_error(Credits::BuyCreditsError, 'Invalid credit card')
       end
     end
+
+    context 'when card expiration is not invalid' do
+      let(:credit_card) do
+        {
+          'card_name' => 'John Doe',
+          'card_number' => '0000 0000 0000 0000',
+          'card_expiration' => '12/22',
+          'cart_security_code' => '123'
+        }
+      end
+
+      it 'raises an error' do
+        expect { buy_credits.call }.to raise_error(Credits::BuyCreditsError, 'Invalid credit card')
+      end
+    end
   end
 end

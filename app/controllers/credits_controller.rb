@@ -33,7 +33,7 @@ class CreditsController < ApplicationController
 
     redirect_to credits_path
   rescue ::Credits::BuyCreditsError => e
-    flash[:alert] = e.message
+    flash[:invalid_card_alert] = e.message
     redirect_to new_credit_path
   end
 end

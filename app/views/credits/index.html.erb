@@ -3,7 +3,7 @@
     <h2 class='font-semibold text-xl'>My Credits</h2>
     <div class='flex items-center gap-2'>
       <%= render 'shared/icon', icon: 'paid', class_name: 'text-blue-500' %>
-      <p class='mr-4'>Total: <strong><%=@credits[:total]%></strong></p>
+      <p class='mr-4'>Total: <strong><%=@credits[:total] / 100 %></strong></p>
       <%= link_to "Buy more! 🤑", new_credit_path, class: 'p-2 rounded text-white font-semibold bg-blue-700 hover:bg-blue-800 cursor-pointer' %>
     </div>
   </div>
@@ -22,7 +22,7 @@
       <tbody>
       <% @credits[:data].each do |credit| %>
         <tr>
-          <td><%= credit.amount %></td>
+          <td><%= credit.amount / 100 %></td>
           <td><%= credit.created_at.to_fs(:long_ordinal) %></td>
         </tr>
       <% end %>

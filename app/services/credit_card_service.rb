@@ -25,6 +25,8 @@ class CreditCardService
   def valid_card_expiration?
     day = Time.zone.now.day
     Date.parse("#{day}/#{card_expiration}") >= Date.today
+  rescue StandardError
+    false
   end
 
   attr_reader :card_name, :card_number, :card_expiration, :cart_security_code

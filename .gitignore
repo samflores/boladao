@@ -33,3 +33,5 @@
 
 # Ignore coverage report
 /coverage
+
+.env

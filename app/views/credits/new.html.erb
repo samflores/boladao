@@ -3,7 +3,7 @@
   <div class='py-4 w-auto'>
     <%= form_with model: @credit, url: credits_path, method: :post, local: true do |f| %>
       <div class="field">
-        <%= f.label :amount, "Amount", class: "block mb-1" %>
+        <%= f.label :amount, "Amount (R$)", class: "block mb-1" %>
         <%= f.number_field :amount, class: "input", required: true %>
       </div>
       <div class="mt-10 flex flex-col">
@@ -44,7 +44,9 @@
           </div>
         </div>
         <% flash.each do |name, message| %>
-        <p class="text-sm text-red-500"><%= message %></p>
+          <% if name == 'invalid_card_alert' %>
+          <p class="text-sm text-red-500"><%= message %></p>
+          <% end %>
         <% end %>
       </div>
       <div class="actions">

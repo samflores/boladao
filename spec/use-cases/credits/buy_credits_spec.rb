@@ -28,7 +28,7 @@ RSpec.describe Credits::BuyCredits do
         {
           'card_name' => 'John Doe',
           'card_number' => '4242 4242 4242 4242',
-          'card_expiration' => '12/24',
+          'card_expiration' => '12/2024',
           'cart_security_code' => '123'
         }
       end

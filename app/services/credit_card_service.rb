@@ -10,21 +10,18 @@ class CreditCardService
   end
 
   def validate?
-    false if some_empty_fields?
-
-    @card_number == '4242 4242 4242 4242' && valid_card_expiration?
+    not_empty_fields? && @card_number == '4242 4242 4242 4242' && valid_card_expiration?
   end
 
   private
 
-  def some_empty_fields?
+  def not_empty_fields?
     fields = [card_name, card_number, card_expiration, cart_security_code]
-    fields.any? { |field| field&.empty? }
+    fields.all?(&:present?)
   end
 
   def valid_card_expiration?
-    day = Time.zone.now.day
-    Date.parse("#{day}/#{card_expiration}") >= Date.today
+    Date.parse("01/#{card_expiration}") >= Date.today
   rescue StandardError
     false
   end

@@ -23,7 +23,7 @@
       <% @credits[:data].each do |credit| %>
         <tr>
           <td><%= credit.amount / 100 %></td>
-          <td><%= credit.created_at.to_fs(:long_ordinal) %></td>
+          <td><%= credit.created_at.strftime('%d/%m/%Y %H:%M') %></td>
         </tr>
       <% end %>
       </tbody>

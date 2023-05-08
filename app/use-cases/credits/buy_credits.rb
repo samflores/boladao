@@ -16,14 +16,15 @@ module Credits
     def call
       raise ::Credits::BuyCreditsError, 'Invalid credit card' unless credit_card_service.validate?
 
-      credit.user = user
-      credit.amount = credit.amount * 100
-      credit.save!
+      new_credit = Credit.new(credit)
+
+      new_credit.user = user
+      new_credit.amount = new_credit.amount * 100
+      new_credit.save!
     end
 
     private
 
-    attr_accessor :credit
-    attr_reader :credit_card_service, :user
+    attr_reader :credit, :credit_card_service, :user
   end
 end

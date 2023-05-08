@@ -23,5 +23,7 @@ module Boladao
     config.load_defaults 7.0
 
     config.generators.system_tests = nil
+
+    config.time_zone = 'Brasilia'
   end
 end

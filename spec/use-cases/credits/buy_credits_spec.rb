@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Credits::BuyCredits do
   subject(:buy_credits) do
     described_class.new(
-      credit:,
+      credit: credit.attributes,
       user:,
       credit_card:
     )
@@ -33,8 +33,8 @@ RSpec.describe Credits::BuyCredits do
         }
       end
 
-      it 'sets the user on the credit card' do
-        expect { buy_credits.call }.to change(credit, :user).from(nil).to(user)
+      it 'save user credits' do
+        expect { buy_credits.call }.to change(Credit, :count).by(1)
       end
     end
 

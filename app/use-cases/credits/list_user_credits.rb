@@ -19,9 +19,7 @@ module Credits
     attr_reader :user_id
 
     def check_user
-      User.find(user_id)
-    rescue ActiveRecord::RecordNotFound
-      raise ::Credits::NotFoundUserError, 'User not found'
+      User.exists?(id: user_id) || raise(Credits::NotFoundUserError, 'User not found')
     end
   end
 end

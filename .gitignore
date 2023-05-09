@@ -35,3 +35,13 @@
 /coverage
 
 .env
+
+/public/assets/administrate/*
+/public/assets/administrate-field-active_storage/*
+/public/assets/controllers/*
+/public/assets/*.json
+/public/assets/*.js
+/public/assets/*.css
+/public/assets/*.map
+/public/assets/*.woff2
+/public/assets/*.gz

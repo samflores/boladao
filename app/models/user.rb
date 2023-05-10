@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :recoverable,
          :rememberable,
          :validatable
-        #  :confirmable
+         :confirmable
 
   enum :role, { admin: 0, player: 1 }
 

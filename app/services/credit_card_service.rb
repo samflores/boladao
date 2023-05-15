@@ -2,10 +2,11 @@
 
 # TODO: Call an real credit card service
 class CreditCardService
-  def initialize(card_name:, card_number:, card_expiration:, cart_security_code:)
+  def initialize(card_name:, card_number:, card_expiration_month:, card_expiration_year:, cart_security_code:)
     @card_name = card_name
     @card_number = card_number
-    @card_expiration = card_expiration
+    @card_expiration_month = card_expiration_month
+    @card_expiration_year = card_expiration_year
     @cart_security_code = cart_security_code
   end
 
@@ -16,15 +17,15 @@ class CreditCardService
   private
 
   def not_empty_fields?
-    fields = [card_name, card_number, card_expiration, cart_security_code]
+    fields = [card_name, card_number, card_expiration_month, card_expiration_year, cart_security_code]
     fields.all?(&:present?)
   end
 
   def valid_card_expiration?
-    Date.parse("01/#{card_expiration}") >= Date.today
+    Date.parse("01/#{card_expiration_month}/#{card_expiration_year}") >= Date.today
   rescue StandardError
     false
   end
 
-  attr_reader :card_name, :card_number, :card_expiration, :cart_security_code
+  attr_reader :card_name, :card_number, :card_expiration_month, :card_expiration_year, :cart_security_code
 end

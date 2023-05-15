@@ -1,4 +1,9 @@
 <div class='w-full flex flex-col'>
+  <% if flash[:notice] %>
+  <div class='bg-secondary text-white font-semibold mb-3 p-2 rounded-md'>
+    <p><%= flash[:notice] %></p>
+  </div>
+  <% end %>
   <div class='flex flex-row items-center justify-between pb-3'>
     <h2 class='font-semibold text-xl'>My Credits</h2>
     <div class='flex items-center gap-2'>

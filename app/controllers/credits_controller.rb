@@ -14,6 +14,9 @@ class CreditsController < ApplicationController
   def create
     Credits::BuyCredits.new(credit: credit_params, user: current_user, credit_card: credit_card_params).call
 
+    amount_added = credit_params[:amount]
+
+    flash[:notice] = "#{amount_added} credits were added!"
     redirect_to credits_path
   rescue Credits::BuyCreditsError => e
     flash[:invalid_card_alert] = e.message
@@ -27,6 +30,12 @@ class CreditsController < ApplicationController
   end
 
   def credit_card_params
-    params.require(:credit).permit(:card_name, :card_number, :card_expiration, :cart_security_code)
+    params.require(:credit).permit(
+      :card_name,
+      :card_number,
+      :card_expiration_month,
+      :card_expiration_year,
+      :cart_security_code
+    )
   end
 end

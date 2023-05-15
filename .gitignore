@@ -45,3 +45,4 @@
 /public/assets/*.map
 /public/assets/*.woff2
 /public/assets/*.gz
+/node_modules/

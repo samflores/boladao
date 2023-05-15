@@ -13,11 +13,13 @@ RSpec.describe Credits::BuyCredits do
 
   let(:credit) { build(:credit, :without_user) }
   let(:user) { build(:user) }
+  let(:valid_card_expiration_year) { Time.now.year + 1 }
   let(:credit_card) do
     {
       'card_name' => card_name,
       'card_number' => card_number,
-      'card_expiration' => '12/24',
+      'card_expiration_month' => '12',
+      'card_expiration_year' => valid_card_expiration_year,
       'cart_security_code' => '123'
     }
   end
@@ -28,7 +30,8 @@ RSpec.describe Credits::BuyCredits do
         {
           'card_name' => 'John Doe',
           'card_number' => '4242 4242 4242 4242',
-          'card_expiration' => '12/2024',
+          'card_expiration_month' => '12',
+          'card_expiration_year' => valid_card_expiration_year,
           'cart_security_code' => '123'
         }
       end
@@ -43,7 +46,8 @@ RSpec.describe Credits::BuyCredits do
         {
           'card_name' => nil,
           'card_number' => '0000 0000 0000 0000',
-          'card_expiration' => '12/24',
+          'card_expiration_month' => '12',
+          'card_expiration_year' => '2024',
           'cart_security_code' => '123'
         }
       end
@@ -58,7 +62,8 @@ RSpec.describe Credits::BuyCredits do
         {
           'card_name' => 'John Doe',
           'card_number' => '0000 0000 0000 0000',
-          'card_expiration' => '12/24',
+          'card_expiration_month' => '12',
+          'card_expiration_year' => '2024',
           'cart_security_code' => '123'
         }
       end
@@ -73,7 +78,8 @@ RSpec.describe Credits::BuyCredits do
         {
           'card_name' => 'John Doe',
           'card_number' => '0000 0000 0000 0000',
-          'card_expiration' => '12/22',
+          'card_expiration_month' => '12',
+          'card_expiration_year' => Time.now.year - 1,
           'cart_security_code' => '123'
         }
       end

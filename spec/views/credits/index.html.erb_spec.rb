@@ -13,6 +13,16 @@ describe 'credits/index.html.erb', type: :feature do
     expect(page).to have_selector('a', text: 'Buy more! 🤑')
   end
 
+  context 'when clicked on the buy more button' do
+    it 'redirects to the credits page' do
+      visit '/credits'
+
+      click_on 'Buy more! 🤑'
+
+      expect(page).to have_current_path('/credits/new')
+    end
+  end
+
   context 'when there no credits' do
     it 'displays no credits message' do
       visit '/credits'

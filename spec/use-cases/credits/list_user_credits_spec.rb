@@ -30,10 +30,12 @@ RSpec.describe Credits::ListUserCredits do
 
     context 'when the user does not exist' do
       let(:credits) { create_list(:credit, 3, amount: 10) }
-      let(:user_id) { 0 }
+      let(:user_id) { 99_999 }
 
       it 'throws user not found exception' do
-        expect { list_user_credits.call }.to raise_error(Credits::NotFoundUserError, 'User not found')
+        expect do
+          list_user_credits.call
+        end.to raise_error(ActiveRecord::RecordNotFound, "Couldn't find User with 'id'=#{user_id}")
       end
     end
   end

@@ -22,7 +22,8 @@ class CreditCardService
   end
 
   def valid_card_expiration?
-    Date.parse("01/#{card_expiration_month}/#{card_expiration_year}") >= Date.today
+    input_date = "01/#{card_expiration_month}/#{card_expiration_year}"
+    Date.parse(input_date).end_of_month >= Date.today
   rescue StandardError
     false
   end

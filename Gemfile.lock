@@ -79,9 +79,6 @@ GEM
     administrate-field-active_storage (0.4.2)
       administrate (>= 0.2.2)
       rails (>= 7.0)
-    apparition (0.6.0)
-      capybara (~> 3.13, < 4)
-      websocket-driver (>= 0.6.5)
     ast (2.4.2)
     bcrypt (3.1.18)
     bindex (0.8.1)
@@ -342,7 +339,6 @@ PLATFORMS
 DEPENDENCIES
   administrate
   administrate-field-active_storage (~> 0.4.2)
-  apparition
   bootsnap
   capybara
   debug

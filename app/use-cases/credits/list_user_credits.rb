@@ -7,9 +7,9 @@ module Credits
     end
 
     def call
-      check_user
+      user = User.find(user_id)
 
-      credits = Credit.where(user_id:)
+      credits = user.credits
 
       { total: credits.sum(:amount), data: credits }
     end
@@ -17,9 +17,5 @@ module Credits
     private
 
     attr_reader :user_id
-
-    def check_user
-      User.exists?(id: user_id) || raise(Credits::NotFoundUserError, 'User not found')
-    end
   end
 end

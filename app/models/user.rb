@@ -13,5 +13,6 @@ class User < ApplicationRecord
   enum :role, { admin: 0, player: 1 }
 
   validates_presence_of :role, :name
-  
+
+  has_many :credits
 end

@@ -38,7 +38,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'apparition'
   gem 'capybara'
 end
 

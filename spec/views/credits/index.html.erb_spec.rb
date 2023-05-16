@@ -8,6 +8,7 @@ describe 'credits/index.html.erb', type: :feature do
   before { login_as(user) }
 
   it 'displays the buy more button' do
+    # TODO: Via home page
     visit '/credits'
 
     expect(page).to have_selector('a', text: 'Buy more! 🤑')

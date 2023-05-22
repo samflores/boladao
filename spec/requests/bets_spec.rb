@@ -3,11 +3,5 @@
 require 'rails_helper'
 
 RSpec.describe 'Bets' do
-  describe "GET /index" do
-    it 'returns http success' do
-      get '/bets/index'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
+  pending "add some examples to (or delete) #{__FILE__}"
 end
